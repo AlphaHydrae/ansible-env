@@ -1,5 +1,3 @@
 ---
 env_user: "{{ user }}"
-env_user_home: "{{ host_user_homes }}/{{ env_user }}"
-env_dir_name: env
-env_path: "{{ env_user_home }}/{{ env_dir_name }}"
+env_path: "{{ host_user_homes }}/{{ env_user }}/env"
