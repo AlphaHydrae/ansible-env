@@ -1,6 +1,10 @@
 ---
 
 - name: Clone or update env repo
-  git: repo={{ env_repo }} dest={{ env_path }} version={{ env_version | default('master') }} update=no
-  become: true
-  become_user: "{{ env_user }}"
+  git:
+    repo: "{{ env_repo }}"
+    dest: "{{ env_path }}"
+    version: "{{ env_version | default('master') }}"
+    update: no
+  # Use remote_user instead of become to allow SSH agent forwarding
+  remote_user: "{{ env_user }}"
