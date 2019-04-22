@@ -1,3 +1,4 @@
 ---
 env_user: "{{ user }}"
+env_group: "{{ env_user }}"
 env_path: "{{ host_user_homes }}/{{ env_user }}/env"

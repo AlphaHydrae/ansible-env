@@ -6,5 +6,11 @@
     dest: "{{ env_path }}"
     version: "{{ env_version | default('master') }}"
     update: no
-  # Use remote_user instead of become to allow SSH agent forwarding
-  remote_user: "{{ env_user }}"
+
+# Clone as root then fix permissions to allow SSH agent forwarding to work.
+- name: Fix env repo permissions
+  file:
+    path: "{{ env_path }}"
+    owner: "{{ env_user }}"
+    group: "{{ env_group }}"
+    recurse: true
